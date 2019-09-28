@@ -7,21 +7,11 @@ import React, { useState, useEffect } from "react";
 
 import "./App.css";
 import FormikSmurfForm from "./FormikSmurfForm";
+import SmurfList from "./SmurfList";
 // import SmurfTest from "./SmurfTest";
 
 
 const App = (props) => {
-
-  // const [ newSmurf, setNewSmurf ] = useState({
-  //   name: '',
-  //   age: '',
-  //   height: ''
-  // });
-
-
-
-
-  // useEffect()
 
     return (
       <div className="App">
@@ -29,6 +19,7 @@ const App = (props) => {
         <div>Welcome to your state management version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <SmurfList/>
         {/* <SmurfTest/> did a smurf test to make sure I could fetch smurfs */}
         <FormikSmurfForm />
       </div>
@@ -37,13 +28,3 @@ const App = (props) => {
 
 export default App; 
 
-// const mapStateToProps = state => {
-//   return {
-//     name: state.name,
-//     age: state.age,
-//     height: state.height,
-//     id: state.id
-//   }
-// }
-
-// export default connect(mapStateToProps, { addSmurf })(App)
