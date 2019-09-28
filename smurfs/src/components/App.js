@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { withFormik, Form, Field } from 'formik';
 import {connect} from 'react-redux'; //import connect to 'connect' this component to redux
 import {addSmurf} from '../actions';
 
@@ -13,7 +14,7 @@ const App = (props) => {
     height: ''
   });
 
-  const handleChanges = e => setNewSmurf({})
+
 
 
   useEffect()
@@ -24,15 +25,28 @@ const App = (props) => {
         <div>Welcome to your state management version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        <form>
-          <input onChange={handleChanges} name='name' value={newSmurf.name}></input>
-          <input onChange={handleChanges} name='age' value={newSmurf.age}></input>
-          <input onChange={handleChanges} name='height' value={newSmurf.height}></input>
-          <button onClick={props.addSmurf}></button>
-        </form>
+        <Form>
+          <Field type='text' name='name' placeholder='new smurf name' />
+          <Field type='text' name='age' placeholder='new smurf age' />
+          <Field type='text' name='height' placeholder='new smurf height (CM)' />
+        </Form>
+        <button>Add smurf!</button>
       </div>
     );
 }
+
+const FormikSmurfForm = withFormik({
+  mapPropsToValues({name, age, height}){
+    return {
+      name: name || '',
+      age: age || '',
+      height: height || ''
+    }
+  },
+  handleSubmit(values) {
+    console.log(values)
+  }
+})()
 
 // export default App; 
 
